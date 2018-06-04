@@ -1,8 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.ticker as mticker
-from mpl_finance import candlestick_ohlc
-import pandas as pd
+from mpl_finance  import candlestick_ohlc
 
 import numpy as np
 import urllib2
@@ -41,17 +40,12 @@ def graph_data(stock):
                                                           converters={0: bytespdate2num('%Y-%m-%d')})
 
     x = 0
-    
+    y = len(date)
     ohlc = []
-
-    quotes = pd.read_csv('C:\\proyectos\\vtrading\\EURUSD5OK.csv', header=0, index_col='Date', parse_dates=True)
-    y = len(quotes)
-
-    print(quotes)
 
     while x < y:
         append_me = date[x], openp[x], highp[x], lowp[x], closep[x], volume[x]
-        ohlc.append(quotes.values[x])
+        ohlc.append(append_me)
         x+=1
 
 

@@ -2,9 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 
-eurusd = pd.read_csv('C:\\proyectos\\vtrading\\EURUSD5OK.csv', header=0, index_col='Date', parse_dates=True)
+eurusd = pd.read_csv('C:\\proyectos\\vtrading\\src\\EURUSD5OK.csv', header=0, index_col='Date', parse_dates=True)
 
-print(eurusd.values)
+print(eurusd['index_col'])
 
 # Plot the closing prices for `aapl`
 #eurusd['Close'].plot(grid=True)

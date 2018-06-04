@@ -4,7 +4,7 @@ from matplotlib.dates import DateFormatter, WeekdayLocator,\
 from mpl_finance import candlestick_ohlc
 import pandas as pd
 
-quotes = pd.read_csv('C:\\proyectos\\vtrading\\EURUSD5OK.csv', header=0, index_col='Date', parse_dates=True)
+quotes = pd.read_csv('C:\\proyectos\\vtrading\\src\\EURUSD5OK.csv', header=0, index_col='Date', parse_dates=True)
 
 # (Year, month, day) tuples suffice as args for quotes_historical_yahoo
 date1 = (2004, 2, 1)
