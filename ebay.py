@@ -2,10 +2,11 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.ticker as mticker
 from mpl_finance  import candlestick_ohlc
-
+import pandas as pd
 import numpy as np
 import urllib2
 import datetime as dt
+
 
 
 def bytespdate2num(fmt, encoding='utf-8'):
