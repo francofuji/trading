@@ -2,10 +2,11 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.ticker as mticker
 from mpl_finance  import candlestick_ohlc
-
+import pandas as pd
 import numpy as np
 import urllib2
 import datetime as dt
+import math
 
 
 def bytespdate2num(fmt, encoding='utf-8'):
@@ -48,8 +49,33 @@ def graph_data(stock):
         ohlc.append(append_me)
         x+=1
 
+    print(ohlc[:10])
 
-    candlestick_ohlc(ax1, ohlc, width=0.4, colorup='#77d879', colordown='#db3f3f')
+
+
+
+    df_ohlc = pd.read_csv('D:\\proyectos\\trading\\vtrading\\src\\trading\\EURUSD5OK.csv', header=0, index_col='Date', parse_dates=True)
+
+    #Reset the index to remove Date column from index
+    df_ohlc = df_ohlc.reset_index()
+    #Naming columns
+    df_ohlc.columns = ["Date","Open","High",'Low',"Close", "Volume"]
+    #Converting dates column to float values
+    df_ohlc['Date'] = df_ohlc['Date'].map(mdates.date2num)
+
+    x = 0
+    y = len(df_ohlc.index)
+    nohlc = []
+
+    while x < y:
+        append_me = df_ohlc['Date'][x], df_ohlc['Open'][x], df_ohlc['High'][x], df_ohlc['Low'][x], df_ohlc['Close'][x], df_ohlc['Volume'][x]
+        nohlc.append(append_me)
+        x+=1
+
+    print(nohlc[:10])
+
+
+    candlestick_ohlc(ax1, nohlc[:50], width=0.4, colorup='#77d879', colordown='#db3f3f')
 
     for label in ax1.xaxis.get_ticklabels():
         label.set_rotation(45)
@@ -65,6 +91,5 @@ def graph_data(stock):
     plt.legend()
     plt.subplots_adjust(left=0.09, bottom=0.20, right=0.94, top=0.90, wspace=0.2, hspace=0)
     plt.show()
-
 
 graph_data('EBAY')
