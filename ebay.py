@@ -9,6 +9,7 @@ import datetime as dt
 import math
 
 
+
 def bytespdate2num(fmt, encoding='utf-8'):
     strconverter = mdates.strpdate2num(fmt)
     def bytesconverter(b):
